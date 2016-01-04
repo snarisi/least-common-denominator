@@ -10,6 +10,8 @@ app.use(bodyParser.json());
 app.use(require('./routes'));
 
 app.use(express.static(path.join(__dirname, '../public')));
+app.use(express.static(path.join(__dirname, '../browser')));
+app.use(express.static(path.join(__dirname, '../node_modules')));
 
 app.use(function (err, req, res, next) {
     var status = err.status || 500;
