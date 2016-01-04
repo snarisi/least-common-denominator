@@ -1,0 +1,19 @@
+{
+  "name": "least-common-denominator",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/snarisi/least-common-denominator.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/snarisi/least-common-denominator/issues"
+  },
+  "homepage": "https://github.com/snarisi/least-common-denominator#readme"
+}
