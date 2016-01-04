@@ -1,33 +1,39 @@
 app.factory('Group', function (Categories, $http) {
 
-    var remainingCategories = Categories.splice();
+    var remainingCategories = Categories.slice();
+    var exclude = {};
 
-    module.exports = {
+    return {
 
         getAllCategories: function () {
             return Categories;
         },
 
         excludeCategory: function (catToExclude) {
-            for (var i = 0; i < remainingCategories.length; i++) {
-                if (catToExclude.name === category[i].name) {
-                    return remainingCategories.splice(i, 1);
-                }
-            }
+            exclude[catToExclude.name] = true;
+            // for (var i = 0; i < remainingCategories.length; i++) {
+            //     if (catToExclude.name === remainingCategories[i].name) {
+            //         return remainingCategories.splice(i, 1);
+            //     }
+            // }
+        },
+
+        submitPreferences: function () {
+            
         },
 
         search: function () {
-            $http({
+            return $http({
                 url: '/api/groups/search',
                 method: 'GET',
                 params: {
-                    categories: remainingCategories.map(function (cat) {
-                        return cat.name;
-                    })
+                    categories: remainingCategories.map(function (cat) {return cat.name;}).join(','),
+                    exclude: exclude,
                 }
             })
             .then(function (res) {
-                console.log(res.data)
+                console.log(res.data);
+                return res.data;
             })
             .then(null, function (err) {
                 console.error(err);
