@@ -1,0 +1,26 @@
+{
+  "name": "lcd",
+  "version": "1.0.0",
+  "description": "decides least objectionable lunch place",
+  "main": "index.js",
+  "scripts": {
+    "test": "start"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/snarisi/least-common-denominator.git"
+  },
+  "keywords": [
+    "lunch"
+  ],
+  "author": "Matt Bryan",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/snarisi/least-common-denominator/issues"
+  },
+  "homepage": "https://github.com/snarisi/least-common-denominator#readme",
+  "dependencies": {
+    "angular-ui-router": "^0.2.15",
+    "bootstrap": "^3.3.6"
+  }
+}
