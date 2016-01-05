@@ -70,12 +70,13 @@
 
       <div class="starter-template" ng-controller="MainCtrl">
         <ui-view>
+          <span class="glyphicon glyphicon-cutlery big-icon"></span>
           <h1>End the lunch debate forever</h1>
           <p class="lead">Lunch Common Denominator will choose the best-rated, least-objectionable restaurant for you and your friends</p>
           <label>Group name:</label>
           <input type="text" ng-model="newGroup.name"><p>{{groupName}}</p>
           <button type="button" class="btn btn-primary" ng-click="generateGroup()">Let's eat!</button>
-          <p>{{status}}</p>
+          <p><span ng-show="status" class="glyphicon glyphicon-hourglass"></span>&nbsp {{status}}</p>
         </ui-view>
       </div>
 

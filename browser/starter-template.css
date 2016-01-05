@@ -8,3 +8,15 @@ body {
 .selector-buttons {
 	text-align: left;
 }
+.next-to {
+	display: inline-block;
+}
+
+.big-icon {
+	font-size: 80px;
+}
+
+.voting {
+	margin-left: 200px;
+	margin-right: 200px;
+}
