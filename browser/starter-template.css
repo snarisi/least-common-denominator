@@ -18,6 +18,10 @@ p {
 }
 
 #map-div {
-    height: 300px;
+    height: 350px;
     width: 300px;
+}
+
+#results {
+    margin-top: 20px;
 }
