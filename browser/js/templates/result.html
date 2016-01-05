@@ -1,9 +1,16 @@
-<h1>You're going to</h1>
+<div ng-show="group.closed">
+    <h1>You're going to</h1>
 
-<div>
-    <h3>{{topResult.name}}</h3>
-    <p>{{topResult.location.address[0]}}</p>
-    <img ng-src="{{topResult.image_url}}">
-    <p><span ng-repeat="cat in topResult.categories">{{cat[0]}}<span ng-if="$index < topResult.categories.length - 1">, </span></span></p>
-    <p><span ng-show="loaded">Rating: </span>{{topResult.rating}}</p>
+    <div>
+        <h3>{{topResult.name}}</h3>
+        <p>{{topResult.location.address[0]}}</p>
+        <img ng-src="{{topResult.image_url}}">
+        <p><span ng-repeat="cat in topResult.categories">{{cat[0]}}<span ng-if="$index < topResult.categories.length - 1">, </span></span></p>
+        <p><span ng-show="loaded">Rating: </span>{{topResult.rating}}</p>
+    </div>
+</div>
+
+<div ng-show="!group.closed">
+    <h3>Wait for voting to close for your group</h3>
+    <p>Check back in a few minutes</p>
 </div>

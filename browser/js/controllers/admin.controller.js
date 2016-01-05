@@ -6,4 +6,5 @@ app.controller('AdminCtrl', function ($scope, Group, $stateParams, $window) {
     	$scope.selectorUrl = "http://" + $window.location.host + "/#/group/" + result._id + "/selector";
     })
     $scope.search = Group.search;
+    $scope.closeVoting = Group.closeVoting;
 });

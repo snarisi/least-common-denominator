@@ -12,7 +12,8 @@ var schema = new Schema({
 	    	type: Number
 	    }
 	},
-    exclude: [String]
+    exclude: [String],
+    closed: { type: Boolean, default: false }
 });
 
 module.exports = mongoose.model('Group', schema);

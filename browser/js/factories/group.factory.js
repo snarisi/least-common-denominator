@@ -1,4 +1,4 @@
-app.factory('Group', function (Categories, $http) {
+app.factory('Group', function (Categories, $http, $state) {
 
     var exclude = {};
 
@@ -19,6 +19,17 @@ app.factory('Group', function (Categories, $http) {
 
         submitPreferences: function () {
 
+        },
+
+        closeVoting: function (id) {
+            console.log('closing voting');
+            $http.get('/api/groups/' + id + '/close')
+                .then(function (res) {
+                    $state.go('result', { id: id })
+                })
+                .then(null, function (err) {
+                    console.error(err);
+                })
         },
 
         getGroup: function (id) {

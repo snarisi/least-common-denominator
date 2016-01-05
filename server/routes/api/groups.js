@@ -37,6 +37,15 @@ router.get('/:id', function (req, res, next) {
     res.json(req.group);
 });
 
+router.get('/:id/close', function(req, res, next) {
+    if (req.group.closed) return res.status(201).send();
+    req.group.closed = true;
+    req.group.save()
+        .then(function (group) {
+            res.status(201).send();
+        });
+});
+
 router.get('/:id/search', function(req, res, next) {
 
     //create an object to make it easy to look up whether a category needs to be excluded
