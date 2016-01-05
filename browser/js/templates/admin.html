@@ -2,4 +2,4 @@
 <h3>Get your restaurant</h3>
 <p class="next-to">This is your group's selection link:&nbsp;</p><a class="next-to" ng-href="{{shortUrl}}">{{shortUrl}}</a>
 <p>Give the rest of {{group.name}} some time to file their grievances. Then click:</p>
-<a ui-sref="result({ id: group._id })"><button class="btn btn-primary">It's Lunch Time</button></a>
+<button ng-click="closeVoting(group._id)" class="btn btn-primary">It's Lunch Time</button>

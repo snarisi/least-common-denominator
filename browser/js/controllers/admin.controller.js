@@ -14,4 +14,5 @@ app.controller('AdminCtrl', function ($scope, Group, $stateParams, $window, $htt
     	$scope.shortenUrl($scope.selectorUrl);
     })
     $scope.search = Group.search;
+    $scope.closeVoting = Group.closeVoting;
 });

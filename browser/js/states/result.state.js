@@ -1,13 +1,13 @@
 app.config(function ($stateProvider) {
     $stateProvider.state({
         name: 'result',
-        url: '/groups/:id/result',
+        url: '/group/:id/result',
         controller: 'ResultCtrl',
         templateUrl: 'js/templates/result.html',
-        // resolve: {
-        //     results: function (Group, $stateParams) {
-        //         return Group.search($stateParams.id);
-        //     }
-        // }
+        resolve: {
+            currentGroup: function (Group, $stateParams) {
+                return Group.getGroup($stateParams.id);
+            }
+        }
     })
 })
