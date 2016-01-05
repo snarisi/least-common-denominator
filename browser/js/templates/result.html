@@ -1,0 +1,8 @@
+<h3>You're going to</h3>
+
+<div>
+    <p>{{topResult.name}}</p>
+    <p><span ng-repeat="cat in topResult.categories">{{cat[0]}}, </span></p>
+    <p><span ng-show="loaded">Rating: </span>{{topResult.rating}}</p>
+
+</div>
