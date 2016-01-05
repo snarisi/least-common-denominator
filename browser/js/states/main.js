@@ -3,6 +3,5 @@ app.config(function ($stateProvider) {
 		url: '/',
 		templateUrl: '../templates/main.html',
 		controller: 'MainCtrl'
-		}
 	});
 });
