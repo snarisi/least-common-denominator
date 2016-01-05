@@ -84,6 +84,11 @@ router.get('/:id/search', function(req, res, next) {
 
 router.put('/:id', function (req, res, next) {
     if (!req.body.exclude) return res.json(req.group);
+    if (req.group.closed) {
+        var err = new Error('Voting for this group is closed');
+        err.status = 401;
+        return next(err);
+    }
 
     req.group.exclude = req.group.exclude.concat(req.body.exclude);
     req.group.save()
