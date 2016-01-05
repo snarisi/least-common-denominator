@@ -2,6 +2,7 @@ var router = require('express').Router();
 var Group = require('../../db').Group;
 var Yelp = require('yelp');
 var categories = require('../../utils/categories');
+var io = require('../../socket.js');
 
 var yelp = new Yelp({
     consumer_key: 'Gk-AIfVKrKoie1pskNgufg',
@@ -27,6 +28,7 @@ router.param('id', function (req, res, next, id) {
 router.get('/', function (req, res, next) {
     Group.find()
         .then(groups => {
+            io.emit('groups', groups);
             res.json(groups);
         })
         .then(null, next);

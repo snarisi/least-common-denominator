@@ -1,8 +1,13 @@
 var express = require('express');
 var bodyParser = require('body-parser');
 var path = require('path');
-
+var server = require('http').createServer();
 var app = express();
+
+server.on('request', app);
+
+module.exports = server;
+require('./socket.js');
 
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
@@ -18,6 +23,6 @@ app.use(function (err, req, res, next) {
     res.status(status).send(err.message);
 })
 
-app.listen(8080, function () {
+server.listen(8080, function () {
     console.log('Server listening on port 8080');
 });
