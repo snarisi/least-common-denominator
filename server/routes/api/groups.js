@@ -68,7 +68,8 @@ router.get('/:id/search', function(req, res, next) {
         term: 'restaurants',
         category_filter: categoryString,
         ll: location,
-        sort: 2
+        sort: 2,
+        radius_filter: 500
     })
     .then(function (data) {
         res.send(
