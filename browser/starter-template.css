@@ -8,3 +8,16 @@ body {
 .selector-buttons {
 	text-align: left;
 }
+
+p {
+    font-size: 20px;
+}
+
+.restaurant-img {
+    width: 200px;
+}
+
+#map-div {
+    height: 300px;
+    width: 300px;
+}

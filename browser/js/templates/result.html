@@ -4,10 +4,13 @@
     <div>
         <h3>{{topResult.name}}</h3>
         <p>{{topResult.location.address[0]}}</p>
-        <img ng-src="{{topResult.image_url}}">
+        <img ng-src="{{topResult.image_url}}" class="restaurant-img">
         <p><span ng-repeat="cat in topResult.categories">{{cat[0]}}<span ng-if="$index < topResult.categories.length - 1">, </span></span></p>
         <p><span ng-show="loaded">Rating: </span>{{topResult.rating}}</p>
     </div>
+
+    <div id="map-div" class="center-block"></div>
+
 </div>
 
 <div ng-show="!group.closed">
