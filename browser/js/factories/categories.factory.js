@@ -5,10 +5,6 @@ app.factory('Categories', function () {
             name: 'tradamerican' //yelp identifier
         },
         {
-            display: 'Beer Garden',
-            name: 'beergarden'
-        },
-        {
             display: 'Burgers',
             name: 'burgers'
         },
@@ -38,11 +34,11 @@ app.factory('Categories', function () {
         },
         {
             display: 'Indian',
-            name: 'indian'
+            name: 'indpak'
         },
         {
             display: 'Japanese',
-            name: 'japanse'
+            name: 'japanese'
         },
         {
             display: 'Mediterranean',
@@ -59,10 +55,6 @@ app.factory('Categories', function () {
         {
             display: 'Pizza',
             name: 'pizza'
-        },
-        {
-            display: 'Pub Food',
-            name: 'pubfood'
         },
         {
             display: 'Seafood',

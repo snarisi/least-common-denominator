@@ -1,5 +1,14 @@
 var router = require('express').Router();
 var Group = require('../../db').Group;
+var Yelp = require('yelp');
+var categories = require('../../utils/categories');
+
+var yelp = new Yelp({
+    consumer_key: 'Gk-AIfVKrKoie1pskNgufg',
+    consumer_secret: 'ffzbkv1YlEqN2uPBxopA91KjqII',
+    token: 'wJ_2jwc184DfL3G862wUucTwrd9j0ecX',
+    token_secret: 'k63TKfLaQCdoLL3_5hXgM8-sAFA',
+});
 
 router.param('id', function (req, res, next, id) {
     Group.findById(id)
@@ -23,50 +32,54 @@ router.get('/', function (req, res, next) {
         .then(null, next);
 });
 
+
 router.get('/:id', function (req, res, next) {
     res.json(req.group);
 });
 
-router.get('/search', function(req, res, next) {
-	// Request API access: http://www.yelp.com/developers/getting_started/api_access
-	var Yelp = require('yelp');
+router.get('/:id/search', function(req, res, next) {
 
-	var yelp = new Yelp({
-	  consumer_key: 'Gk-AIfVKrKoie1pskNgufg',
-	  consumer_secret: 'ffzbkv1YlEqN2uPBxopA91KjqII',
-	  token: 'wJ_2jwc184DfL3G862wUucTwrd9j0ecX',
-	  token_secret: 'k63TKfLaQCdoLL3_5hXgM8-sAFA',
-	});
+    //create an object to make it easy to look up whether a category needs to be excluded
+    var exclusions = {};
+    req.group.exclude.forEach(function (category) {
+        exclusions[category] = true;
+    });
 
-	// See http://www.yelp.com/developers/documentation/v2/search_api
-	// yelp.search({ term: 'restaurants', location: 'New York', limit: '20' })
-	yelp.search({ term: 'restaurants', ll: '40.705214999999995,-74.0091106', limit: '3' })
-	.then(function (data) {
-	  console.log(data.businesses);
+    //create a string of non-excluded categories to use for the yelp search
+    var categoryString = categories.map(function (category) {
+        return category.name;
+    }).filter(function (category) {
+        return !exclusions[category];
+    }).join(',');
 
-	  for (var i = 0; i < data.businesses.length; i++) {
-	  	// console.log(data.businesses[i].categories);
-	  };
-	})
-	.catch(function (err) {
-	  console.error(err);
-	});
+    //create a string with the location coordinates for the yelp search
+    var location = [req.group.location.latitude, req.group.location.longitude].join(',');
 
-	// // See http://www.yelp.com/developers/documentation/v2/business
-	// yelp.business('yelp-san-francisco')
-	//   .then(console.log)
-	//   .catch(console.error);
+    yelp.search({
+        term: 'restaurants',
+        category_filter: categoryString,
+        ll: location,
+        sort: 2
+    })
+    .then(function (data) {
+        res.send(
+            //filter restaurants with exluded categories from the results
+            data.businesses.filter(business => business.categories.every(cat => !exclusions[cat[1]]))
+        );
+    })
+    .catch(function (err) {
+        console.error(err);
+    });
 
-	// yelp.phoneSearch({ phone: '+15555555555' })
-	//   .then(console.log)
-	//   .catch(console.error);
+});
 
-	// A callback based API is also available:
-	// yelp.business('yelp-san-francisco', function(err, data) {
-	//   if (err) return console.log(error);
-	//   console.log(data);
-	// });
-	res.send('route to search');
+router.put('/:id', function (req, res, next) {
+    if (!req.body.exclude) return res.json(req.group);
+
+    req.group.exclude = req.group.exclude.concat(req.body.exclude);
+    req.group.save()
+        .then(group => res.json(group))
+        .then(null, next);
 });
 
 router.post('/', function (req, res, next) {

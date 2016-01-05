@@ -10,8 +10,9 @@ var schema = new Schema({
 	    },
 	    longitude: {
 	    	type: Number
-	    } 
-	}
+	    }
+	},
+    exclude: [String]
 });
 
 module.exports = mongoose.model('Group', schema);
