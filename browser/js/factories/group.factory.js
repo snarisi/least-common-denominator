@@ -19,17 +19,24 @@ app.factory('Group', function (Categories, $http) {
         },
 
         submitPreferences: function () {
-            
+
         },
 
-        search: function () {
+        getGroup: function (id) {
+            return $http.get('/api/groups/' + id)
+                .then(function (res) {
+                    return res.data;
+                })
+                .then(null, function (err) {
+                    console.error(err);
+                });
+        },
+
+        search: function (id) {
+            console.log(id);
             return $http({
-                url: '/api/groups/search',
-                method: 'GET',
-                params: {
-                    categories: remainingCategories.map(function (cat) {return cat.name;}).join(','),
-                    exclude: exclude,
-                }
+                url: '/api/groups/' + id + '/search',
+                method: 'GET'
             })
             .then(function (res) {
                 console.log(res.data);

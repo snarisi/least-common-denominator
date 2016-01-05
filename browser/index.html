@@ -6,19 +6,21 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
     <meta name="description" content="">
-    <meta name="author" content="">
-<<<<<<< HEAD
+    <meta name="author" content="">]
+
     <script src="angular/angular.js" defer></script>
+    <script src="angular-ui-router/build/angular-ui-router.min.js" defer></script>
     <script src="js/module.js" defer></script>
     <script src="js/controllers/main-controller.js" defer></script>
+    <script src="js/controllers/admin.controller.js" defer></script>
+    <script src="js/controllers/result.controller.js" defer></script>
     <script src="js/factories/categories.factory.js" defer></script>
     <script src="js/factories/group.factory.js" defer></script>
-=======
-    <script src="/angular/angular.js" defer></script>
-    <script src="/angular-ui-router/release/angular-ui-router.js" defer></script>
-    <script src="./js/module.js" defer></script>
-    <script src="./js/controllers/main-controller.js" defer></script>
->>>>>>> d5b5534eb56ac17037ca39106bc9bcfdbacc16e3
+    <script src="js/states/main.js" defer></script>
+    <script src="js/states/admin.state.js" defer></script>
+    <script src="js/states/result.state.js" defer></script>
+
+
 <!--     <link rel="icon" href="../../favicon.ico">
  -->
     <title>Lunch Common Denominator</title>
@@ -63,7 +65,7 @@
       </div>
     </nav>
 
-    <div class="container" ng-controller="MainCtrl">
+    <div class="container">
 
       <div class="starter-template">
         <ui-view></ui-view>
