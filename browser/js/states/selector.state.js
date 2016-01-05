@@ -1,7 +1,7 @@
 app.config(function ($stateProvider) {
 	$stateProvider.state('selector', {
-		url: '/selector',
+		url: '/group/:id/selector',
 		templateUrl: 'js/templates/selector.html',
-		controller: 'MainCtrl'
+		controller: 'SelectorCtrl'
 		});
 });

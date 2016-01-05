@@ -12,12 +12,13 @@
     <script src="angular-ui-router/build/angular-ui-router.min.js" defer></script>
     <script src="js/module.js" defer></script>
     <script src="js/controllers/main-controller.js" defer></script>
+    <script src="js/controllers/selector.controller.js" defer></script>
     <script src="js/controllers/admin.controller.js" defer></script>
     <script src="js/controllers/result.controller.js" defer></script>
     <script src="js/factories/categories.factory.js" defer></script>
     <script src="js/factories/group.factory.js" defer></script>
-    <script src="js/states/main.js" defer></script>
-    <script src="js/states/selector.js" defer></script>
+    <script src="js/states/main.state.js" defer></script>
+    <script src="js/states/selector.state.js" defer></script>
     <script src="js/states/admin.state.js" defer></script>
     <script src="js/states/result.state.js" defer></script>
 
@@ -67,13 +68,14 @@
 
     <div class="container">
 
-      <div class="starter-template">
+      <div class="starter-template" ng-controller="MainCtrl">
         <ui-view>
           <h1>End the lunch debate forever</h1>
           <p class="lead">Lunch Common Denominator will choose the best-rated, least-objectionable restaurant for you and your friends</p>
           <label>Group name:</label>
-          <input type="text" ng-model="groupName">
+          <input type="text" ng-model="newGroup.name"><p>{{groupName}}</p>
           <button type="button" class="btn btn-primary" ng-click="generateGroup()">Let's eat!</button>
+          <p>{{status}}</p>
         </ui-view>
       </div>
 

@@ -1,14 +1,15 @@
 app.config(function ($stateProvider) {
 
-    $stateProvider.state({
-        name: 'admin',
-        url: '/groups/:id/admin',
+    $stateProvider.state('admin', {
+        url: '/group/:id/admin',
         templateUrl: 'js/templates/admin.html',
-        controller: 'AdminCtrl',
-        resolve: {
-            currentGroup: function ($stateParams, Group) {
-                return Group.getGroup($stateParams.id);
-            }
-        }
+        controller: 'AdminCtrl'//,
+        // resolve: {
+        //     currentGroup: function ($stateParams, Group) {
+        //         console.log($stateParams);
+        //         console.log(Group);
+        //         return Group.getGroup($stateParams.id);
+        //     }
+        // }
     });
 });

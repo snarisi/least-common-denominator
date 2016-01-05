@@ -1,6 +1,5 @@
 app.factory('Group', function (Categories, $http) {
 
-    var remainingCategories = Categories.slice();
     var exclude = {};
 
     return {
@@ -33,7 +32,6 @@ app.factory('Group', function (Categories, $http) {
         },
 
         search: function (id) {
-            console.log(id);
             return $http({
                 url: '/api/groups/' + id + '/search',
                 method: 'GET'

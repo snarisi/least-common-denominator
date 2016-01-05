@@ -1,27 +1,21 @@
-app.controller('MainCtrl', function($scope, $http, Categories) {
-  $scope.categories = Categories.list
-  $scope.obnoxious = function(){
-    alert($scope.categories);
-  }
-  $scope.formData = {};
-  $scope.translateData = function() {
-    var exclusions= Object.keys($scope.formData.exclusions);
-    return exclusions;
-  }
-  $scope.submitExclusions = function() {
-    var exclusions = $scope.translateData();
-    alert(exclusions);
-    // $http.put('api/groups/')
-  }
+app.controller('MainCtrl', function($scope, $http, Categories, $state) {
+  $scope.newGroup = {};
   $scope.generateGroup = function(){
+    console.log($scope.newGroup.name);
+    $scope.status = "getting your location...";
     navigator.geolocation.getCurrentPosition(function(result){
+    $scope.status = "location retrieved!";
       $http.post('api/groups', {
-        name: $scope.groupName,
+        name: $scope.newGroup.name,
         location: {
-          latitude: result.latitude,
-          longitude: result.longitude
+          latitude: result.coords.latitude,
+          longitude: result.coords.longitude
         }})
       .then(function(result){
+        $state.go('admin', { id: result.data._id });
+      })
+      .then(null, function(error){
+        alert(error);
       })
     })
   }
