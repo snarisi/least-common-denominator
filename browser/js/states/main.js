@@ -3,10 +3,5 @@ app.config(function ($stateProvider) {
 		url: '/',
 		templateUrl: 'js/templates/main.html',
 		controller: 'MainCtrl'
-<<<<<<< HEAD
-		});
-});
-=======
 	});
 });
->>>>>>> admin_page
