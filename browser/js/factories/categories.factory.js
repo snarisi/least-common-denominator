@@ -1,5 +1,5 @@
 app.factory('Categories', function () {
-    return [
+    return { list: [
         {
             display: 'American', //name to diplay in the DOM
             name: 'tradamerican' //yelp identifier
@@ -73,5 +73,5 @@ app.factory('Categories', function () {
             name: 'vegetarian'
         },
 
-    ];
+    ]}
 })

@@ -1,0 +1,11 @@
+<h1>Eliminate categories:</h1>
+<form class="form-vertical" name="eliminationForm">
+	<label>Which don't you want?</label>
+			<div class="checkbox form-group selector-buttons" ng-repeat="category in categories">
+				<label>
+					<input type="checkbox" value="{{category.name}}" class="checkbox selector-buttons" ng-model="formData.exclusions[category.name]">
+					{{category.display}}
+				</label>
+			</div>
+			<input type="submit" class="btn btn-success btn-lg" value="Sumbit" ng-click="submitExclusions()">
+</form>
