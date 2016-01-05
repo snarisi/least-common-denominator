@@ -9,9 +9,5 @@ app.factory('Socket', function () {
         console.log(message);
     });
 
-    socket.on('groups', function (groups) {
-        console.log(groups);
-    })
-
     return socket;
 });

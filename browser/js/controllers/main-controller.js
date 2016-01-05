@@ -12,4 +12,7 @@ app.controller('MainCtrl', function($scope, $http, Socket) {
       })
     })
   }
+  Socket.on('groups', function (groups) {
+      console.log('groups: ', groups);
+  })
 });
