@@ -1,7 +1,7 @@
 app.config(function ($stateProvider) {
 	$stateProvider.state('main', {
 		url: '/',
-		templateUrl: '../templates/main.html',
+		templateUrl: '../js/templates/main.html',
 		controller: 'MainCtrl'
 	});
 });
