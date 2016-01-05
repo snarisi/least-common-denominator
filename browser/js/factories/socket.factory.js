@@ -4,10 +4,10 @@ app.factory('Socket', function () {
     socket.on('connect', function () {
         console.log('I am connected');
     });
-
-    socket.on('hello', function (message) {
-        console.log(message);
-    });
+    //
+    // socket.on('hello', function (message) {
+    //     console.log(message);
+    // });
 
     return socket;
 });

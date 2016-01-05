@@ -1,4 +1,5 @@
-app.controller('MainCtrl', function($scope, $http, Socket) {
+app.controller('MainCtrl', function($scope, $state, $http, Socket) {
+  $scope.newGroup = {};
   $scope.generateGroup = function(){
     console.log($scope.newGroup.name);
     $scope.status = "getting your location...";
@@ -18,7 +19,4 @@ app.controller('MainCtrl', function($scope, $http, Socket) {
       })
     })
   }
-  Socket.on('groups', function (groups) {
-      console.log('groups: ', groups);
-  })
 });

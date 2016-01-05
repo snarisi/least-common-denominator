@@ -50,6 +50,7 @@ router.get('/:id/close', function(req, res, next) {
 
 router.get('/:id/search', function(req, res, next) {
 
+
     //create an object to make it easy to look up whether a category needs to be excluded
     var exclusions = {};
     req.group.exclude.forEach(function (category) {
@@ -74,10 +75,10 @@ router.get('/:id/search', function(req, res, next) {
         radius_filter: 500
     })
     .then(function (data) {
-        res.send(
-            //filter restaurants with exluded categories from the results
-            data.businesses.filter(business => business.categories.every(cat => !exclusions[cat[1]]))
-        );
+        //filter restaurants with exluded categories from the results
+        var results = data.businesses.filter(business => business.categories.every(cat => !exclusions[cat[1]]))
+        io.emit('decision', results[0]);
+        res.send(results);
     })
     .catch(function (err) {
         console.error(err);

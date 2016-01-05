@@ -1,4 +1,4 @@
-app.controller('ResultCtrl', function ($scope, $stateParams, Group, currentGroup) {
+app.controller('ResultCtrl', function ($scope, $stateParams, Group, currentGroup, Socket) {
     var initializeMap = function (center) {
         var latLng = {
             lat: center.latitude,
@@ -27,4 +27,7 @@ app.controller('ResultCtrl', function ($scope, $stateParams, Group, currentGroup
             initializeMap($scope.topResult.location.coordinate);
         });
 
+    Socket.on('connect', function () {
+        console.log('I have connected to the socket');
+    });
 });
