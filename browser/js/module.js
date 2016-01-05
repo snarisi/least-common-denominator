@@ -1,1 +1,1 @@
-var app = angular.module('lcd', []);
+var app = angular.module('lcd', ['ui.router'])

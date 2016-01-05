@@ -10,6 +10,7 @@
     <script src="/angular/angular.js" defer></script>
     <script src="/angular-ui-router/release/angular-ui-router.js" defer></script>
     <script src="./js/module.js" defer></script>
+    <script src="./js/states/main.js" defer></script>
     <script src="./js/controllers/main-controller.js" defer></script>
 <!--     <link rel="icon" href="../../favicon.ico">
  -->
@@ -58,7 +59,14 @@
     <div class="container" ng-controller="MainCtrl">
 
       <div class="starter-template">
-        <ui-view></ui-view>
+        <a ui-sref="main" class="btn btn-secondary btn-block">test</a>
+        <ui-view>
+          <h1>End the lunch debate forever</h1>
+          <p class="lead">Lunch Common Denominator will choose the best-rated, least-objectionable restaurant for you and your friends</p>
+          <label>Group name:</label>
+          <input type="text" ng-model="groupName">
+          <button type="button" class="btn btn-primary" ng-click="generateGroup()">Let's eat!</button>
+        </ui-view>
       </div>
 
     </div><!-- /.container -->
